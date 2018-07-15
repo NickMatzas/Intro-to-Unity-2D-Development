@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HelloWorld : MonoBehaviour {
+
+    public new string name = "Untitled";
+    public float speed;    
+
+
+    void Awake()
+    {
+        print("Awake");
+    }
+
+    private void FixedUpdate()
+    {
+        //Used for physics, and it's called at fixed interval allowing more accurate physics calculations
+    }
+
+    private void LateUpdate()
+    {
+        //Called after the everything is updated, allowing to clean up any logic in the script after
+        //fixedupdate and update have run
+    }
+
+    // Used for initialization
+    void Start () {
+        print("Start");
+    }
+    // Update is called once per frame
+    void Update () {
+        
+        var pos = transform.position; //variable pos get's the initial position value set on the sprite
+        transform.position = new Vector3(pos.x + speed, pos.y + speed, pos.z);
+ 
+    }
+}
