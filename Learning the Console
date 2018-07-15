@@ -17,7 +17,6 @@ public class HelloWorld : MonoBehaviour {
                 throw new UnityException("Something Happened. Halp!");
             }
         }
-
   }
 	// Update is called once per frame
 	void Update () {
