@@ -5,8 +5,13 @@ using UnityEngine;
 public class HelloWorld : MonoBehaviour {
 
     public new string name = "Untitled";
-    public float speed;    
-
+    [Range(0.0f, 0.5f)] //speed range set
+    public float speed;
+    public bool alive;
+    public int age = 10;   //example int
+    public int[] points;   //example int array
+    public string[] names; //example string array
+    //above examples to show results in the Unity Inspector
 
     void Awake()
     {
