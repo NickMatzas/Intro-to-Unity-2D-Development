@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour {
+
+    public float speed = 150f;
+    public Vector2 maxVelocity = new Vector2(60, 100);
+    //making sure that the player sprite does not exceed the maximum velocity in x & y directions
+    private Rigidbody2D body2D;
+    private SpriteRenderer renderer2D;
+
+    public float jetspeed = 200f;
+    public bool standing; //compiler sets to false;
+    public float standingThreshold = 4f;
+    public float airSpeedMultiplier = 0.3f;
+
+    // Use this for initialization
+    void Start () {
+        body2D = GetComponent<Rigidbody2D>();
+        //generic method to access a component on a game object
+        renderer2D = GetComponent<SpriteRenderer>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+        var absVelx = Mathf.Abs(body2D.velocity.x);
+        //setting the absolute value of the absolute velocity on the x axis
+        var absVely = Mathf.Abs(body2D.velocity.y);
+        //same for the y
+
+        if (absVely <= standingThreshold){
+            standing = true;
+        }
+        else {
+            standing = false;
+        }
+
+        var forceX = 0f;
+        var forceY = 0f;
+
+        if (Input.GetKey("right")) //condition to check whether the right arrow key is pressed
+        {
+            if (absVelx < maxVelocity.x) //applying force to the rigid body
+            {
+                forceX = standing ? speed : (speed * airSpeedMultiplier);
+            }
+            renderer2D.flipX = false;
+        }
+        else if (Input.GetKey("left")) //same as above to the opposite direction
+        {
+            if (absVelx < maxVelocity.x)
+            {
+                forceX = standing ? -speed : (-speed * airSpeedMultiplier);
+            }
+            renderer2D.flipX = true;
+        }
+        if (Input.GetKey("up")){ //seperate condition for up, to still allow movement left and right while flying
+            forceY = jetspeed;
+        }
+
+        body2D.AddForce(new Vector2(forceX, forceY));
+
+	}
+}
