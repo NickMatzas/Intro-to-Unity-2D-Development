@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class animationtest : MonoBehaviour {
+
+    Animator animator;
+
+	// Use this for initialization
+	void Start () {
+        animator = GetComponent<Animator>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+
+        if (Input.GetKey(KeyCode.A)) //condition to check whether a key is pressed, to switch between animations
+        {
+            animator.SetInteger("animstate", 1); //animstate int set on Unity Animator
+        }
+        else
+        {
+            animator.SetInteger("animstate", 0);
+        }
+
+	}
+}
