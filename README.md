@@ -14,6 +14,8 @@ The scripts created in each course will be in this repository.
 All files will be named in a way that corresponds to the course in which the script was made.<br>
 For example, scripts for course #3 will be named 3.1) x, 3.2) y, 3.3) z etc.
 
+This repository only serves as a personal log where I document the scripts written on the courses I take
+
 # Course Details
 
 <b>1) Learning Unity 2D Scripting </b><br>
